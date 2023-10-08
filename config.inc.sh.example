@@ -1,0 +1,16 @@
+#!/bin/bash
+# Set this array to include all the interfaces you want to create cgroups and
+# custom routing tables for
+SUB_TABLE_INTERFACES=(
+	"wlan126" # example
+	"wlan127" # example
+)
+
+# If OVERWRITE_RESOLVCONF is set, /etc/resolv.conf will be overwritten whenever
+# a ipv4 routing change is detected on one of SUB_TABLE_INTERFACES. This may be
+# necessary if one of the interfaces receives a nameserver from its DHCP server
+# and that nameserver is not accessible by the other interfaces. It is
+# recommended to select a public nameserver that will be accessible to all your
+# interfaces for this. If you do not want /etc/resolv.conf to be touched by this
+# script, set this variable to an empty string.
+OVERWRITE_RESOLVCONF="nameserver 1.1.1.1"
